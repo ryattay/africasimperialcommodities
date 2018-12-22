@@ -1,0 +1,72 @@
+{
+    {
+      "Year" : 1870,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 52,
+      "Quantity" : 1098.60072014
+    },
+    {
+      "Year" : 1871,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 120,
+      "Quantity" : 2032.0938176
+    },
+    {
+      "Year" : 1872,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 168,
+      "Quantity" : 1830.69880532
+    },
+    {
+      "Year" : 1873,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 43,
+      "Quantity" : 657.25534413
+    },
+    {
+      "Year" : 1874,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 13410,
+      "Quantity" : null
+    },
+    {
+      "Year" : 1875,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 145,
+      "Quantity" : null
+    },
+    {
+      "Year" : 1876,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 112,
+      "Quantity" : null
+    },
+    {
+      "Year" : 1877,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 120,
+      "Quantity" : null
+    },
+    {
+      "Year" : 1878,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 10,
+      "Quantity" : null
+    },
+    {
+      "Year" : 1881,
+      "Region" : "West Africa",
+      "Country" : "Nigeria",
+      "Money" : 67,
+      "Quantity" : null
+    }
+}
