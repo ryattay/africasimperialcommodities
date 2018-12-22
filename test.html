@@ -27,6 +27,30 @@
     <!-- D3 Link -->
     <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
 
+    <!-- Style -->
+    <style>
+
+      .bar{
+        fill: steelblue;
+      }
+
+      .bar:hover{
+        fill: brown;
+      }
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+    </style>
+
   </head>
 
   <body id="page-top">
@@ -103,11 +127,11 @@
 
 
           // load the data
-          d3.json("./data_test.json", function(error, data) {
+          d3.json("./data/test.json", function(error, data) {
 
               data.forEach(function(d) {
                   d.Year = d.Year;
-                  d.Money = d.Money;
+                  d.Money = +d.Money;
               });
 
             // scale the range of the data
@@ -144,7 +168,6 @@
                 .attr("x", function(d) { return x(d.Year); })
                 .attr("width", x.rangeBand())
                 .attr("y", function(d) { return y(d.Money); })
-                .attr("height", function(d) { return height - y(d.Money); });
 
           });
 
