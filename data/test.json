@@ -1,4 +1,4 @@
-{
+[
     {
       "Year" : 1870,
       "Region" : "West Africa",
@@ -69,4 +69,4 @@
       "Money" : 67,
       "Quantity" : null
     }
-}
+]
