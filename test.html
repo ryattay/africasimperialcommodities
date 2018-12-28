@@ -88,13 +88,12 @@
           d3.json("test.json", function(error, data) {
 
             svg.selectAll("rect")
-              .data(data)
-              .enter()
-              .append("rect")
-              .attr("x", function(d) { return x(d.Year); })
-              .attr("y", function(d) { return y(d.Money); })
-              .attr("width", w / dataset.length - barPadding)
-              .attr("height", function(d) { return h - y(d.Money); })
+                .data(data)
+              .enter().append("rect")
+                .attr("x", function(d) { return x(d.Year); })
+                .attr("y", function(d) { return y(d.Money); })
+                .attr("width", w / dataset.length - barPadding)
+                .attr("height", function(d) { return h - y(d.Money); })
 
           });
 
