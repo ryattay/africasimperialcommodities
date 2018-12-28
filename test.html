@@ -78,29 +78,23 @@
           var h = 100;
           var barPadding = 1;
 
+          // Data
+          var dataset = [ 52, 120, 168, 43, 145, 112, 120, 10, 67 ];
+
           // Create SVG element
           var svg = d3.select("body")
                                 .append("svg")
                                 .attr("width", w)
                                 .attr("height", h);
 
-          // Load the data
-          d3.json("test.json", function(error, data) {
-
-            svg.selectAll("rect")
-                .data(data)
-              .enter().append("rect")
-                .attr("x", function(d) { return x(d.Year); })
-                .attr("y", function(d) { return y(d.Money); })
-                .attr("width", w / dataset.length - barPadding)
-                .attr("height", function(d) { return h - y(d.Money); })
-
-          });
-
-          function type(d) {
-            d.Money = +d.Money;
-            return d;
-          }
+          svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function(d, i) { return i * (w / dataset.length); })
+            .attr("y", function(d) { return h - (d * 2); })
+            .attr("width", w / dataset.length - barPadding)
+            .attr("height", function(d) { return d * 2; });
 
         </script>
       </div>
