@@ -25,7 +25,7 @@
     <link href="css/freelancer.min.css" rel="stylesheet">
 
     <!-- D3 Link -->
-    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script> -->
 
     <!-- Style -->
     <style>
@@ -92,23 +92,23 @@
     <!-- Data Visualization Bar Graph -->
     <section class="download-section content-section text-center" id="data_chart">
       <div class="container">
-        <script type="text/javascript">
+        <svg class="chart"></svg>
+        <script src="//d3js.org/d3.v5.min.js" charset="utf-8"></script>
+        <script>
 
           // set the dimensions of the canvas
           var margin = {top: 20, right: 20, bottom: 70, left: 40},
               width = 600 - margin.left - margin.right,
               height = 300 - margin.top - margin.bottom;
 
-
           // set the ranges
           var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
-
           var y = d3.scale.linear().range([height, 0]);
 
           // define the axis
           var xAxis = d3.svg.axis()
               .scale(x)
-              .orient("bottom")
+              .orient("bottom");
 
           var yAxis = d3.svg.axis()
               .scale(y)
@@ -126,10 +126,10 @@
           // load the data
           d3.json("./data/test.json", function(error, data) {
 
-              data.forEach(function(d) {
-                  d.Year = d.Year;
-                  d.Money = +d.Money;
-              });
+              // data.forEach(function(d) {
+              //     d.Year = d.Year;
+              //     d.Money = +d.Money;
+              // });
 
             // scale the range of the data
             x.domain(data.map(function(d) { return d.Year; }));
