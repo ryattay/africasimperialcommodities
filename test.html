@@ -24,11 +24,29 @@
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
-    <!-- D3 Link -->
-    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
-
     <!-- Style -->
-    <style></style>
+    <style>
+
+      .bar{
+        fill: steelblue;
+      }
+
+      .bar:hover{
+        fill: brown;
+      }
+
+    	.axis {
+    	  font: 10px sans-serif;
+    	}
+
+    	.axis path,
+    	.axis line {
+    	  fill: none;
+    	  stroke: #000;
+    	  shape-rendering: crispEdges;
+    	}
+
+    </style>
 
   </head>
 
@@ -71,41 +89,153 @@
     <!-- Data Visualization Bar Graph -->
     <section class="download-section content-section text-center" id="data_chart">
       <div class="container">
-        <script type="text/javascript">
+        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js">
 
-          // Width and height
-          var w = 500;
-          var h = 100;
-          var barPadding = 1;
+          // Canvas dimensions
+          var margin = {top: 20, right: 20, bottom: 70, left: 40},
+              width = 960 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
 
-          // Data
-          var dataset = [ 52, 120, 168, 43, 145, 112, 120, 10, 67 ];
+          // Set the ranges
+          var x = d3.scale.ordinal()
+              .rangeRoundBands([0, width], .05);
 
-          // Create SVG element
-          var svg = d3.select("body")
-                                .append("svg")
-                                .attr("width", w)
-                                .attr("height", h);
+          var y = d3.scale.linear()
+              .range([height, 0]);
 
-          svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("x", function(d, i) { return i * (w / dataset.length); })
-            .attr("y", function(d) { return h - (d * 2); })
-            .attr("width", w / dataset.length - barPadding)
-            .attr("height", function(d) { return d * 2; });
+          // Define the axis
+          var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+          var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(10);
+
+          // add the SVG element
+          var svg = d3.select("body").append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+          // load the data
+          d3.json("animalSkins_decade.json", function(error, data) {
+
+              data.forEach(function(d) {
+                  d.decade = d.decade;
+                  d.vx.sum = +d.vx.sum;
+              });
+
+            // scale the range of the data
+            x.domain(data.map(function(d) { return d.decade; }));
+            y.domain([0, d3.max(data, function(d) { return d.vx.sum; })]);
+
+            // add axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+              .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", "-.55em")
+                .attr("transform", "rotate(-90)" );
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+              .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 5)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Kilograms");
+
+            // Add bar chart
+            svg.selectAll("bar")
+                .data(data)
+              .enter().append("rect")
+                .style("fill", "steelblue")
+                .attr("x", function(d) { return x(d.decade); })
+                .attr("width", x.rangeBand())
+                .attr("y", function(d) { return y(d.vx.sum); })
+                .attr("height", function(d) { return height - y(d.vx.sum); });
+
+          });
 
         </script>
       </div>
     </section>
 
-    <!-- Data Visualization Circle -->
-    <section class="download-section content-section text-center" id="data_circle">
+    <!-- Data Visualization Scatterplot -->
+    <section class="download-section content-section text-center" id="data_scatter">
       <div class="container">
-        <script type="text/javascript">
+        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js">
 
+          var margin = {top: 20, right: 20, bottom: 30, left: 40},
+              width = 960 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
 
+          var xValue = function(d) { return d.year;},
+              xScale = d3.scale.linear().range([0, width]),
+              xMap = function(d) { return xScale(xValue(d));},
+              xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+          var yValue = function(d) { return d.vx;},
+              yScale = d3.scale.linear().range([height, 0]),
+              yMap = function(d) { return yScale(yValue(d));},
+              yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+          var svg = d3.select("body").append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+          d3.json("animalSkins.json", function(error, data) {
+
+            data.forEach(function(d) {
+              d.year = +d.year;
+              d.vx = +d.vx;
+            })
+
+            xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
+            yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+              .append("text")
+                .attr("class", "label")
+                .attr("x", width)
+                .attr("y", -6)
+                .style("text-anchor", "end")
+                .text("Year");
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+              .append("text")
+                .attr("class", "label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Kilograms");
+
+            svg.selectAll(".dot")
+                .data(data)
+              .enter().append("circle")
+                .attr("class", "dot")
+                .attr("r", 3.5)
+                .attr("cx", xMap)
+                .attr("cy", yMap);
+
+          });
 
         </script>
       </div>
