@@ -35,7 +35,8 @@
     <!-- Data Visualization Bar Graph -->
     <section>
       <div>
-        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js">
+        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script>
 
           // Canvas dimensions
           var margin = {top: 20, right: 20, bottom: 70, left: 40},
@@ -60,7 +61,7 @@
             .ticks(10);
 
           // add the SVG element
-          var svg = d3.select("body").append("svg")
+          var chart = d3.select(".chart")
               .attr("width", width + margin.left + margin.right)
               .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -72,15 +73,15 @@
 
               data.forEach(function(d) {
                   d.decade = d.decade;
-                  d.vx.sum = +d.vx.sum;
+                  d.vx.sum = +d.vxSum;
               });
 
             // scale the range of the data
             x.domain(data.map(function(d) { return d.decade; }));
-            y.domain([0, d3.max(data, function(d) { return d.vx.sum; })]);
+            y.domain([0, d3.max(data, function(d) { return d.vxSum; })]);
 
             // add axis
-            svg.append("g")
+            chart.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
                 .call(xAxis)
@@ -90,7 +91,7 @@
                 .attr("dy", "-.55em")
                 .attr("transform", "rotate(-90)" );
 
-            svg.append("g")
+            chart.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
               .append("text")
@@ -101,14 +102,14 @@
                 .text("Kilograms");
 
             // Add bar chart
-            svg.selectAll("bar")
+            chart.selectAll(".bar")
                 .data(data)
               .enter().append("rect")
                 .style("fill", "steelblue")
                 .attr("x", function(d) { return x(d.decade); })
                 .attr("width", x.rangeBand())
-                .attr("y", function(d) { return y(d.vx.sum); })
-                .attr("height", function(d) { return height - y(d.vx.sum); });
+                .attr("y", function(d) { return y(d.vxSum); })
+                .attr("height", function(d) { return height - y(d.vxSum); });
 
           });
 
