@@ -11,14 +11,6 @@
     <!-- Style -->
     <style>
 
-      .bar{
-        fill: steelblue;
-      }
-
-      .bar:hover{
-        fill: brown;
-      }
-
     	.axis {
     	  font: 10px sans-serif;
     	}
@@ -39,7 +31,9 @@
     <!-- Data Visualization Scatterplot -->
     <section>
       <div>
-        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js">
+        <svg class="chart"></svg>
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script>
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40},
               width = 960 - margin.left - margin.right,
@@ -55,7 +49,7 @@
               yMap = function(d) { return yScale(yValue(d));},
               yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-          var svg = d3.select("body").append("svg")
+          var chart = d3.select(".chart")
               .attr("width", width + margin.left + margin.right)
               .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -63,15 +57,10 @@
 
           d3.json("animalSkins.json", function(error, data) {
 
-            data.forEach(function(d) {
-              d.year = +d.year;
-              d.vx = +d.vx;
-            })
-
             xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
             yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
 
-            svg.append("g")
+            chart.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
                 .call(xAxis)
@@ -82,7 +71,7 @@
                 .style("text-anchor", "end")
                 .text("Year");
 
-            svg.append("g")
+            chart.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
               .append("text")
@@ -93,7 +82,7 @@
                 .style("text-anchor", "end")
                 .text("Kilograms");
 
-            svg.selectAll(".dot")
+            chart.selectAll(".dot")
                 .data(data)
               .enter().append("circle")
                 .attr("class", "dot")
