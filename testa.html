@@ -35,6 +35,7 @@
     <!-- Data Visualization Bar Graph -->
     <section>
       <div>
+        <svg class="chart"></svg>
         <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script>
 
@@ -70,11 +71,6 @@
 
           // load the data
           d3.json("animalSkins_decade.json", function(error, data) {
-
-              data.forEach(function(d) {
-                  d.decade = d.decade;
-                  d.vxSum = +d.vxSum;
-              });
 
             // scale the range of the data
             x.domain(data.map(function(d) { return d.decade; }));
