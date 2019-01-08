@@ -28,7 +28,7 @@
 
           var diameter = 500;
 
-          var color = d3.scale.category20b();
+          var color = d3.scaleOrdinal(d3.schemeCategory20);
 
           var bubble = d3.layout.pack()
             .sort(null)
