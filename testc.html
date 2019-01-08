@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Style -->
+    <style>
+
+
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- Data Visualization Bubbles -->
+    <section>
+      <div>
+        <svg class="chart"></svg>
+        <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+        <script>
+
+          var diameter = 500;
+
+          var color = d3.scale.category20b();
+
+          var bubble = d3.layout.pack()
+            .sort(null)
+            .size([diameter, diameter])
+            .padding(1.5);
+
+          var chart = d3.select(".chart")
+            .attr("width", diameter)
+            .attr("height", diameter)
+            .attr("class", "bubble");
+
+          d3.json("animalSkins_1920s.json", function(error, data) {
+
+            var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+
+            var bubbles = chart.append("g")
+              .attr("transform", "translate(0,0)")
+              .selectAll(".bubble")
+              .data(nodes)
+              .enter();
+
+            bubbles.append("circle")
+              .attr("r", function(d){ return d.r; })
+              .attr("cx", function(d){ return d.x; })
+              .attr("cy", function(d){ return d.y; })
+              .style("fill", function(d) { return color(d.vxSum); });
+
+            bubbles.append("text")
+              .attr("x", function(d){ return d.x; })
+              .attr("y", function(d){ return d.y + 5; })
+              .attr("text-anchor", "middle")
+              .text(function(d){ return d.cntr_desc; })
+              .style({
+                "fill":"white",
+                "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+                "font-size": "12px"
+              });
+
+          });
+
+        </script>
+      </div>
+    </section>
+
+  </body>
+
+</html>
