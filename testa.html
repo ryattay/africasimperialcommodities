@@ -35,7 +35,7 @@
     <!-- Data Visualization Bar Graph -->
     <section>
       <div>
-        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script>
 
           // Canvas dimensions
@@ -73,7 +73,7 @@
 
               data.forEach(function(d) {
                   d.decade = d.decade;
-                  d.vx.sum = +d.vxSum;
+                  d.vxSum = +d.vxSum;
               });
 
             // scale the range of the data
