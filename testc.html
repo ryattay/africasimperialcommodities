@@ -30,10 +30,10 @@
 
           var color = d3.scaleOrdinal(d3.schemeCategory20);
 
-          // var bubble = d3.layout.pack()
-          //   .sort(null)
-          //   .size([diameter, diameter])
-          //   .padding(1.5);
+          var bubble = d3.pack()
+            .sort(null)
+            .size([diameter, diameter])
+            .padding(1.5);
 
           var chart = d3.select(".chart")
             .attr("width", diameter)
