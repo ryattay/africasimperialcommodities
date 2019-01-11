@@ -1,0 +1,11 @@
+Filepath: ./img/GC_Atlas_75.pdf
+Title: An Economic Map of Africa Showing the Sources of Various Commodities
+Date: 1928
+Image type: Map
+Description: A coloured map highlighting the sources of various commodities to be found in Africa in 1928. Rubber, gum arabic, dates, cotton, gold, ivory and cattle breeding are assigned colours, all other commodities and economic activities are written in red.
+Commodity: Silver and Gold, Cotton, Sugar, Chocolate, Wine and Spirits, Timber
+Theme: Trade and Commerce
+URI: http://www.globalcommodities.amdigital.co.uk.proxy2.cl.msu.edu/FurtherResources/VisualResources/Image/GC_Atlas/75
+Image from: [An Atlas of Economic Geography](http://www.globalcommodities.amdigital.co.uk.proxy2.cl.msu.edu/Documents/Details/GC_Atlas)
+Copyright: Oxford University Press
+
