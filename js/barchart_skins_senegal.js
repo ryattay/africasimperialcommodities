@@ -64,6 +64,21 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .attr("x", function(d) { return x(d.year); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.vx); })
-      .attr("height", function(d) { return height - y(d.vx); });
-
+      .attr("height", function(d) { return height - y(d.vx); })
+      .on("mouseenter", function (actual, i) {
+          d3.select(this)
+            .transition()
+            .duration(300)
+            .attr("opacity", 0.5)
+          chart.append("line")
+            .attr("x1", 0)
+            .attr("y1", y)
+            .attr("x2", width)
+            .attr("y2", y)
+            .attr("stroke", "black")
+      })
+      on.("mouseleave", function (actual, i) {
+        d3.select(this)
+          .attr("opacity", 1)
+      });
 });
