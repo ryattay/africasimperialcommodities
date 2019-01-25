@@ -43,7 +43,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Kilograms");
+      .text("Metric tons");
 
   chart.selectAll(".dot")
       .data(data)
