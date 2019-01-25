@@ -18,6 +18,10 @@ var chart = d3.select(".chart")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 d3.json("./data/animalSkins.json", function(error, data) {
 
   xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
