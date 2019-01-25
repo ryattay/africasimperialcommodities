@@ -60,7 +60,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
         tooltip.transition()
           .duration(200)
           .style("opacity", .9);
-        tooltip.html(d["cntr_desc"] + "<br/> Product:" + d["prdt_desc"] + "<br/> Year:" + xValue(d) + "<br/> Quantity:" + yValue(d) + " metric tons")
+        tooltip.html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + xValue(d) + "<br/> Quantity: " + yValue(d) + " metric tons")
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
       })
