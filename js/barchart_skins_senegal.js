@@ -77,7 +77,7 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
             .attr("y2", y)
             .attr("stroke", "black")
       })
-      on.("mouseleave", function () {
+      .on("mouseleave", function () {
         d3.select(this)
           .attr("opacity", 1)
       });
