@@ -56,6 +56,15 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .style("text-anchor", "end")
       .text("Metric tons");
 
+  chart.append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .selectAll(".textlabel")
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("class", "textlabel")
+      .attr("y", function(d) { return yScale(d.vx) - 3; });
+
   // Add bar chart
   chart.selectAll(".bar")
       .data(data)
