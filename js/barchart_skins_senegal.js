@@ -60,8 +60,8 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
       .selectAll(".textlabel")
       .data(data)
-      .enter()
-      .append("text")
+    .enter().append("text")
+      .style("fill", "black")
       .attr("class", "textlabel")
       .attr("y", function(d) { return y(d.vx) - 3; });
 
