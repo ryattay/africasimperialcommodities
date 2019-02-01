@@ -56,14 +56,14 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .style("text-anchor", "end")
       .text("Metric tons");
 
-  chart.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-      .selectAll(".textlabel")
-      .data(data)
-    .enter().append("text")
-      .style("fill", "black")
-      .attr("class", "textlabel")
-      .attr("y", function(d) { return y(d.vx) - 3; });
+  // chart.append("g")
+  //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  //     .selectAll(".textlabel")
+  //     .data(data)
+  //   .enter().append("text")
+  //     .style("fill", "black")
+  //     .attr("class", "textlabel")
+  //     .attr("y", function(d) { return y(d.vx) - 3; });
 
   // Add bar chart
   chart.selectAll(".bar")
