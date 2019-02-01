@@ -63,7 +63,7 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .enter()
       .append("text")
       .attr("class", "textlabel")
-      .attr("y", function(d) { return yScale(d.vx) - 3; });
+      .attr("y", function(d) { return y(d.vx) - 3; });
 
   // Add bar chart
   chart.selectAll(".bar")
