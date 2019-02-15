@@ -23,49 +23,61 @@
     <section>
       <div>
         <svg class="chart"></svg>
-        <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script>
 
-          var diameter = 500;
+          var diameter = 960,
+              format = d3.format(",d"),
+              color = d3.scale.category20c();
 
-          var color = d3.scaleOrdinal(d3.schemeCategory20);
-
-          var bubble = d3.pack()
+          var bubble = d3.layout.pack()
             .sort(null)
             .size([diameter, diameter])
             .padding(1.5);
 
-          var chart = d3.select(".chart")
+          var svg = d3.select("body").append("svg")
             .attr("width", diameter)
             .attr("height", diameter)
             .attr("class", "bubble");
 
-          d3.json("./data/animalSkins_1920s.json", function(error, data) {
+          var tooltip = d3.select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .style("color", "white")
+            .style("padding", "8px")
+            .style("background-color", "rgba(0, 0, 0, 0.75)")
+            .style("border-radius", "6px")
+            .style("font", "12px sans-serif")
+            .text("tooltip");
 
-            var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+          d3.json("./data/animalSkins_colonial.json", function(data) {
 
-            var bubbles = chart.append("g")
-              .attr("transform", "translate(0,0)")
-              .selectAll(".bubble")
-              .data(nodes)
-              .enter();
+            var node = svg.selectAll(".node")
+                .data(bubble(nodes).descendants())
+                .filter(function(d) { return !d.children; })
+              .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-            bubbles.append("circle")
-              .attr("r", function(d){ return d.r; })
-              .attr("cx", function(d){ return d.x; })
-              .attr("cy", function(d){ return d.y; })
-              .style("fill", function(d) { return color(d.vxSum); });
+            node.append("circle")
+                .attr("r", function(d) { return d.r; })
+                .style("fill", function(d) { return color(d.cntr_desc); })
+                .on("mouseover", function(d) {
+                        tooltip.text(d.cntr_desc + ": " + d.vxSum);
+                        tooltip.style("visibility", "visible");
+                })
+                .on("mousemove", function() {
+                    return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+                })
+                .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
-            bubbles.append("text")
-              .attr("x", function(d){ return d.x; })
-              .attr("y", function(d){ return d.y + 5; })
-              .attr("text-anchor", "middle")
-              .text(function(d){ return d.cntr_desc; })
-              .style({
-                "fill":"white",
-                "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-                "font-size": "12px"
-              });
+            node.append("text")
+                .attr("dy", ".3em")
+                .style("text-anchor", "middle")
+                .style("pointer-events", "none")
+                .text(function(d) { return d.cntr_desc.substring(0, d.r / 3); });
 
           });
 
