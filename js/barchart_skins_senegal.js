@@ -25,7 +25,7 @@ var tip = d3.tip()
   .offset([-10,0])
   .html(function(d) {
     return "Frequency: " + d.vx;
-  })
+  });
 
 // add the SVG element
 var chart = d3.select(".chart")
