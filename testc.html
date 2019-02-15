@@ -56,8 +56,8 @@
 
             var node = svg.selectAll(".node")
                 .data(bubble.nodes(data))
-                .filter(function(d) { return !d.children; })
               .enter().append("g")
+                .filter(function(d) { return !d.children; })
                 .attr("class", "node")
                 .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
