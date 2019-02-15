@@ -52,10 +52,10 @@
             .style("font", "12px sans-serif")
             .text("tooltip");
 
-          d3.json("./data/animalSkins_colonial.json", function(data) {
+          d3.json("./data/animalSkins_colonial.json", function(error, data) {
 
             var node = svg.selectAll(".node")
-                .data(bubble(nodes).descendants())
+                .data(bubble.nodes(data))
                 .filter(function(d) { return !d.children; })
               .enter().append("g")
                 .attr("class", "node")
