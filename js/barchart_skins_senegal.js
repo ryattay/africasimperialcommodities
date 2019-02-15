@@ -20,6 +20,13 @@ var yAxis = d3.svg.axis()
   .orient("left")
   .ticks(10);
 
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10,0])
+  .html(function(d) {
+    return "Frequency: " + d.vx;
+  })
+
 // add the SVG element
 var chart = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
@@ -27,6 +34,8 @@ var chart = d3.select(".chart")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+
+chart.call(tip);
 
 // load the data
 d3.json("./data/animalSkins_senegal.json", function(error, data) {
@@ -74,16 +83,6 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.vx); })
       .attr("height", function(d) { return height - y(d.vx); })
-      .on("mouseover", function (d) {
-          d3.select(this)
-            .transition()
-            .duration(200)
-            .attr("opacity", 0.5)
-      })
-      .on("mouseout", function () {
-          d3.select(this)
-            .transition()
-            .duration(500)
-            .attr("opacity", 1)
-      });
+      .on("mouseover", tip.show)
+      .on("mouseout", tip.hide)
 });
