@@ -24,7 +24,7 @@ var tip2 = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10,0])
   .html(function(d) {
-    return d.vx2 + " metric tons";
+    return d.vx + " metric tons";
   });
 
 // add the SVG element
@@ -41,8 +41,8 @@ svg2.call(tip2);
 d3.json("./data/animalSkins_senegal.json", function(error, data) {
 
   // scale the range of the data
-  x2.domain(data.map(function(d) { return d.year2; }));
-  y2.domain([0, d3.max(data, function(d) { return d.vx2; })]);
+  x2.domain(data.map(function(d) { return d.year; }));
+  y2.domain([0, d3.max(data, function(d) { return d.vx; })]);
 
   // add axis
   svg2.append("g")
@@ -70,10 +70,10 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
-      .attr("x", function(d) { return x2(d.year2); })
+      .attr("x", function(d) { return x2(d.year); })
       .attr("width", x2.rangeBand())
-      .attr("y", function(d) { return y2(d.vx2); })
-      .attr("height", function(d) { return height2 - y2(d.vx2); })
+      .attr("y", function(d) { return y2(d.vx); })
+      .attr("height", function(d) { return height2 - y2(d.vx); })
       .on("mouseover", tip2.show)
       .on("mouseout", tip2.hide)
 });
