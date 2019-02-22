@@ -12,7 +12,7 @@ var yValue1 = function(d) { return d.vx;},
     yMap1 = function(d) { return yScale1(yValue1(d));},
     yAxis1 = d3.svg.axis().scale(yScale1).orient("left");
 
-var svg1 = d3.select(".chart")
+var svg1 = d3.select("#svg1")
     .attr("width", width1 + margin1.left + margin1.right)
     .attr("height", height1 + margin1.top + margin1.bottom)
   .append("g")
@@ -22,10 +22,10 @@ var tooltip1 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-d3.json("./data/animalSkins.json", function(error, data) {
+d3.json("./data/animalSkins.json", function(error, data1) {
 
-  xScale1.domain([d3.min(data, xValue1)-1, d3.max(data, xValue1)+1]);
-  yScale1.domain([d3.min(data, yValue1)-1, d3.max(data, yValue1)+1]);
+  xScale1.domain([d3.min(data1, xValue1)-1, d3.max(data1, xValue1)+1]);
+  yScale1.domain([d3.min(data1, yValue1)-1, d3.max(data1, yValue1)+1]);
 
   svg1.append("g")
       .attr("class", "x axis")
@@ -50,7 +50,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .text("Metric tons");
 
   svg1.selectAll(".dot")
-      .data(data)
+      .data(data1)
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
