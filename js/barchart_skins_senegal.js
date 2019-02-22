@@ -4,23 +4,23 @@ var margin = {top: 20, right: 20, bottom: 40, left: 20},
     height = 500 - margin.top - margin.bottom;
 
 // Set the ranges
-var x2 = d3.scale.ordinal()
+var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .05);
 
-var y2 = d3.scale.linear()
+var y = d3.scale.linear()
     .range([height, 0]);
 
 // Define the axis
-var xAxis2 = d3.svg.axis()
-  .scale(x2)
+var xAxis = d3.svg.axis()
+  .scale(x)
   .orient("bottom");
 
-var yAxis2 = d3.svg.axis()
-  .scale(y2)
+var yAxis = d3.svg.axis()
+  .scale(y)
   .orient("left")
   .ticks(10);
 
-var tip2 = d3.tip()
+var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10,0])
   .html(function(d) {
@@ -28,7 +28,7 @@ var tip2 = d3.tip()
   });
 
 // add the SVG element
-var svg2 = d3.select("svg2")
+var svg2 = d3.select("#svg2")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -38,17 +38,17 @@ var svg2 = d3.select("svg2")
 svg2.call(tip);
 
 // load the data
-d3.json("./data/animalSkins_senegal.json", function(error, data2) {
+d3.json("./data/animalSkins_senegal.json", function(error, data) {
 
   // scale the range of the data
-  x2.domain(data2.map(function(d) { return d.year; }));
-  y2.domain([0, d3.max(data2, function(d) { return d.vx; })]);
+  x.domain(data.map(function(d) { return d.year; }));
+  y.domain([0, d3.max(data, function(d) { return d.vx; })]);
 
   // add axis
   svg2.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis2)
+      .call(xAxis)
     .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -57,7 +57,7 @@ d3.json("./data/animalSkins_senegal.json", function(error, data2) {
 
   svg2.append("g")
       .attr("class", "y axis")
-      .call(yAxis2)
+      .call(yAxis)
     .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 5)
@@ -76,7 +76,7 @@ d3.json("./data/animalSkins_senegal.json", function(error, data2) {
 
   // Add bar chart
   svg2.selectAll(".bar")
-      .data(data2)
+      .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
       .attr("x", function(d) { return x(d.year); })
