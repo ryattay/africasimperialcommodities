@@ -28,14 +28,14 @@ var tip = d3.tip()
   });
 
 // add the SVG element
-var chart = d3.select(".chart")
+var svg3 = d3.select("#svg3")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-chart.call(tip);
+scg3.call(tip);
 
 // load the data
 d3.json("./data/animalSkins_nigeria.json", function(error, data) {
@@ -45,7 +45,7 @@ d3.json("./data/animalSkins_nigeria.json", function(error, data) {
   y.domain([0, d3.max(data, function(d) { return d.vx; })]);
 
   // add axis
-  chart.append("g")
+  svg3.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
@@ -55,7 +55,7 @@ d3.json("./data/animalSkins_nigeria.json", function(error, data) {
       .attr("dy", "-.55em")
       .attr("transform", "rotate(-90)" );
 
-  chart.append("g")
+  svg3.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
@@ -75,7 +75,7 @@ d3.json("./data/animalSkins_nigeria.json", function(error, data) {
   //     .attr("y", function(d) { return y(d.vx) - 3; });
 
   // Add bar chart
-  chart.selectAll(".bar")
+  svg3.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
