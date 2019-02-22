@@ -1,6 +1,6 @@
 // Canvas dimensions
-var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 960 - margin.left - margin.right,
+var margin = {top: 20, right: 20, bottom: 20, left: 20},
+    width = 760 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // Set the ranges
