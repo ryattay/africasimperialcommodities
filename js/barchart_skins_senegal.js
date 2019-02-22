@@ -80,7 +80,7 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
     .enter().append("rect")
       .style("fill", "steelblue")
       .attr("x", function(d) { return x2(d.year); })
-      .attr("width", x.rangeBand())
+      .attr("width", x2.rangeBand())
       .attr("y", function(d) { return y2(d.vx); })
       .attr("height", function(d) { return height2 - y2(d.vx); })
       .on("mouseover", tip2.show)
