@@ -1,24 +1,24 @@
-var margin = {top: 20, right: 20, bottom: 40, left: 40},
-    width = 760 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin1 = {top: 20, right: 20, bottom: 40, left: 40},
+    width1 = 760 - margin.left - margin.right,
+    height1 = 500 - margin.top - margin.bottom;
 
-var xValue = function(d) { return d.year;},
-    xScale = d3.scale.linear().range([0, width]),
-    xMap = function(d) { return xScale(xValue(d));},
-    xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+var xValue1 = function(d) { return d.year;},
+    xScale1 = d3.scale.linear().range([0, width]),
+    xMap1 = function(d) { return xScale(xValue(d));},
+    xAxis1 = d3.svg.axis().scale(xScale).orient("bottom");
 
-var yValue = function(d) { return d.vx;},
-    yScale = d3.scale.linear().range([height, 0]),
-    yMap = function(d) { return yScale(yValue(d));},
-    yAxis = d3.svg.axis().scale(yScale).orient("left");
+var yValue1 = function(d) { return d.vx;},
+    yScale1 = d3.scale.linear().range([height, 0]),
+    yMap1 = function(d) { return yScale(yValue(d));},
+    yAxis1 = d3.svg.axis().scale(yScale).orient("left");
 
-var svg1 = d3.select("#svg1")
+var svg1 = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var tooltip = d3.select("body").append("div")
+var tooltip1 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
