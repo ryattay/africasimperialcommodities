@@ -38,11 +38,11 @@ var svg2 = d3.select("#svg2")
 svg2.call(tip2);
 
 // load the data
-d3.json("./data/animalSkins_senegal.json", function(error, data2) {
+d3.json("./data/animalSkins_senegal.json", function(error, data) {
 
   // scale the range of the data
-  x2.domain(data2.map(function(d) { return d.year2; }));
-  y2.domain([0, d3.max(data2, function(d) { return d.vx2; })]);
+  x2.domain(data.map(function(d) { return d.year2; }));
+  y2.domain([0, d3.max(data, function(d) { return d.vx2; })]);
 
   // add axis
   svg2.append("g")
@@ -67,7 +67,7 @@ d3.json("./data/animalSkins_senegal.json", function(error, data2) {
 
   // Add bar chart
   svg2.selectAll(".bar")
-      .data(data2)
+      .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
       .attr("x", function(d) { return x2(d.year2); })
