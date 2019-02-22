@@ -79,10 +79,10 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
       .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
-      .attr("x", function(d) { return x(d.year); })
+      .attr("x", function(d) { return x2(d.year); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.vx); })
-      .attr("height", function(d) { return height2 - y(d.vx); })
+      .attr("y", function(d) { return y2(d.vx); })
+      .attr("height", function(d) { return height2 - y2(d.vx); })
       .on("mouseover", tip2.show)
       .on("mouseout", tip2.hide)
 });
