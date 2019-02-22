@@ -28,7 +28,7 @@ var tip2 = d3.tip()
   });
 
 // add the SVG element
-var svg2 = d3.select(".chart")
+var svg2 = d3.select("#svg2")
     .attr("width", width2 + margin2.left + margin2.right)
     .attr("height", height2 + margin2.top + margin2.bottom)
   .append("g")
@@ -64,15 +64,6 @@ d3.json("./data/animalSkins_senegal.json", function(error, data2) {
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text("Metric tons");
-
-  // chart.append("g")
-  //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-  //     .selectAll(".textlabel")
-  //     .data(data)
-  //   .enter().append("text")
-  //     .style("fill", "black")
-  //     .attr("class", "textlabel")
-  //     .attr("y", function(d) { return y(d.vx) - 3; });
 
   // Add bar chart
   svg2.selectAll(".bar")
