@@ -21,6 +21,74 @@
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
+    <!-- Style -->
+    <style>
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .bar{
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: black;
+      }
+
+      .d3-tip {
+        line-height: 1;
+        font-weight: bold;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 2px;
+      }
+
+      .d3-tip:after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 10px;
+        width: 100%;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.8);
+        content: "\25BC";
+        position: absolute;
+        text-align: center;
+      }
+
+      .d3-tip.n:after {
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+      }
+
+      .tooltip {
+        position: absolute;
+        text-align: center;
+        width: 300px;
+        height: 112px;
+        padding: 2px;
+        font: 8px;
+        background: lightgrey;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+    </style>
+
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+
   </head>
 
   <body>
@@ -83,6 +151,9 @@
 
             <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
 
+            <svg class="chart" id="svg1"></svg>
+            <script type="text/javascript" src="./js/scatterplot_kola.js"></script>
+
             <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
 
             <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
@@ -90,6 +161,16 @@
             <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
 
             <h2 class="section-heading">Reaching for the Stars</h2>
+
+            <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
+
+            <svg class="chart" id="svg2"></svg>
+            <script type="text/javascript" src="./js/barchart_kola_sierraleone.js"></script>
+
+            <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
+
+            <svg class="chart" id="svg3"></svg>
+            <script type="text/javascript" src="./js/barchart_kola_goldcoast.js"></script>
 
             <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
 
