@@ -9,3 +9,65 @@ URI: http://www.globalcommodities.amdigital.co.uk.proxy2.cl.msu.edu/FurtherResou
 Image from: [An Atlas of Economic Geography](http://www.globalcommodities.amdigital.co.uk.proxy2.cl.msu.edu/Documents/Details/GC_Atlas)
 Copyright: Oxford University Press
 
+Filepath: ./img/saison-des-arachides-sur-le-quai-1936.jpg
+URI: https://www.au-senegal.com/dakar-dans-les-annees-1930,3461.html?lang=fr
+Description: Retrouvées au fond d’une vieille malle, des cartes postales de Dakar dans les années trente signées de Maurice Fouladou, « photographe spécialiste sous les Tropiques ». Imprimées par Phototypie tarnaise à Albi (Tarn), France. Maître d’hôtel sur les paquebots de la compagnie maritime des Chargeurs Réunis, Maurice Fouladou travailla sur les navires tel que « L’Asie », « Le Brazza » et « Le Laennec ». C’est en 1929 à Saïgon qu’il débuta sa collection de photographies de pays d’outre mer (Sénégal, Congo, Guinée, Côte d’Ivoire, Togo, Dahomey, Gabon), d’Asie et des Amériques. Les photographies ci-dessous sont éditées dans la collection Photo-Océan en 1937. Il habitait la commune de Pont l’Abbé d’Arnoult en Charente Inférieure.
+
+Filepath: ./img/dakar-quais.jpg
+URI: https://www.au-senegal.com/dakar-et-saint-louis-dans-les-annees-quarante,1768.html?lang=fr
+Description: Cartes postales de Marcel Bonami, gendarme au Sénégal entre 1942 et 1954, retrouvées par son petit-fils Christian Jullien.
+
+Filepath: ./img/Ghana.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5415849295/in/album-72157625975820108/
+Our Catalogue Reference: Part of CO 1069/43
+
+Filepath: ./img/Ghana_CacaoResearchInstitute.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5416479780/in/album-72157625975820108/
+Description: A plant physiologist and his assistant examine a cacao tree cutting in the Plant Propagation Section of the West African Cacao Research Institute, at New Tafo.
+Location: Gold Coast, New Tafo, Ghana
+Date: January 1957
+Our Catalogue Reference: Part of CO 1069/46
+
+Filepath: ./img/Nigeria.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5416801296/in/album-72157625850393609/
+Title: CO 1069-71-13
+Description: Native Scenes and native life.
+Our Catalogue Reference: Part of CO 1069/71
+
+Filepath: ./img/Nigeria_Cattle.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5416803314/in/album-72157625850393609/
+Title: CO 1069-71-19
+Description: Native Scenes and native life.
+Our Catalogue Reference: Part of CO 1069/71
+
+Filepath: ./img/Nigeria_Kola.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5424726209/in/album-72157625850393609/
+Title: CO 1069-66-74
+Description: Embarking Kola nuts. Three boats with natives and cargo.
+Location: Nigeria
+Date: c1920-1929
+Our Catalogue Reference: Part of CO 1069/66
+
+Filepath: ./img/Nigeria_KolaEmbark.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5424727957/in/album-72157625850393609/
+Title: CO 1069-66-76
+Description: Kolas and passengers. Embarking natives, luggage and cargo.
+Location: Nigeria
+Date: c1920-1929
+Our Catalogue Reference: Part of CO 1069/66
+
+Filepath: ./img/Nigeria_CO-1069-59-6.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5415943271/in/album-72157625850393609/
+Title: CO 1069-59-6
+Description: Katsena agricultural show. 1911. Prize winners in the two year old heifer class.
+Location: Katsena
+Date: 1911
+Our Catalogue Reference: Part of CO 1069/59
+
+Filepath: ./img/Gambia_CO-1069-28-7.jpg
+URI: https://www.flickr.com/photos/nationalarchives/5418866258/in/album-72157625870418315/
+Title: CO 1069-28-7
+Description: Groundnuts being bagged at the collecting centre of a Farmers' Co-operative Produce Union.
+Location: London,, Gambia
+Date: 1949
+Our Catalogue Reference: Part of CO 1069/28
