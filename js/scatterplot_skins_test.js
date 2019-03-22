@@ -2,6 +2,10 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+var zoom = d3.behavior.zoom()
+    .scaleExtent([1, 10])
+    .on("zoom", zoomed);
+
 var xValue = function(d) { return d.year;},
     xScale = d3.scale.linear().range([0, width]),
     xMap = function(d) { return xScale(xValue(d));},
@@ -16,7 +20,8 @@ var chart = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    .call(zoom);
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -71,3 +76,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       });
 
 });
+
+function zoomed() {
+  container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
