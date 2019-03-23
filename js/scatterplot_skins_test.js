@@ -6,6 +6,12 @@ var zoom = d3.behavior.zoom()
     .scaleExtent([1, 10])
     .on("zoom", zoomed);
 
+var drag = d3.behavior.drag()
+    .origin(function(d) { return d; })
+    .on("dragstart", dragstarted)
+    .on("drag", dragged)
+    .on("dragend", dragended);
+
 var xValue = function(d) { return d.year;},
     xScale = d3.scale.linear().range([0, width]),
     xMap = function(d) { return xScale(xValue(d));},
@@ -26,6 +32,12 @@ var chart = d3.select(".chart")
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
+
+var rect = svg.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .style("fill", "none")
+    .style("pointer-events", "all");
 
 d3.json("./data/animalSkins.json", function(error, data) {
 
@@ -61,6 +73,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .attr("r", 3.5)
       .attr("cx", xMap)
       .attr("cy", yMap)
+      .call(drag)
       .on("mouseover", function(d) {
         tooltip.transition()
           .duration(200)
@@ -79,4 +92,17 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
 function zoomed() {
   container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
+
+function dragstarted(d) {
+  d3.event.sourceEvent.stopPropagation();
+  d3.select(this).classed("dragging", true);
+}
+
+function dragged(d) {
+  d3.select(this).attr("cx", d.xValue = d3.event.xValue).attr("cy", d.yValue = d3.event.yValue);
+}
+
+function dragended(d) {
+  d3.select(this).classed("dragging", false);
 }
