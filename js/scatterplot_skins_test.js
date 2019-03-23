@@ -66,7 +66,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
   xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
   yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
 
-  chart.append("g")
+  container.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
@@ -77,7 +77,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .style("text-anchor", "end")
       .text("Year");
 
-  chart.append("g")
+  container.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
@@ -88,7 +88,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .style("text-anchor", "end")
       .text("Metric tons");
 
-  chart.selectAll(".dot")
+  container.selectAll(".dot")
       .data(data)
     .enter().append("circle")
       .attr("class", "dot")
