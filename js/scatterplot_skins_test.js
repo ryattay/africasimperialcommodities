@@ -33,7 +33,7 @@ var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var rect = svg.append("rect")
+var rect = chart.append("rect")
     .attr("width", width)
     .attr("height", height)
     .style("fill", "none")
