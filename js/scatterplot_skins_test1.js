@@ -14,7 +14,7 @@ var tooltip = d3.select("body").append("div")
 
 d3.json("./data/animalSkins.json", function(error, data) {
 
-  var x = d3.scaleLinear()
+  var x = d3.scale.linear()
     .domain([1825, 1950])
     .range([0, width]);
 
@@ -22,7 +22,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
-  var y = d3.scaleLinear()
+  var y = d3.scale.linear()
     .domain([0, 2250])
     .range([height, 0]);
 
