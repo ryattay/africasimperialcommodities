@@ -20,14 +20,14 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
   var xAxis = chart.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.chart.axis(x));
+    .call(d3.svg.axis(x));
 
   var y = d3.scale.linear()
     .domain([0, 2250])
     .range([height, 0]);
 
   var yAxis = chart.append("g")
-    .call(d3.chart.axis(y));
+    .call(d3.svg.axis(y));
 
   var clip = chart.append("defs").append("chart:clipPath")
     .attr("id", "clip")
