@@ -8,6 +8,10 @@ var chart = d3.select(".chart")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var tooltip = d3.select("body").append("tooltip")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 d3.json("./data/animalSkins.json", function(error, data) {
 
   var x = d3.scaleLinear()
@@ -35,11 +39,6 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
   var scatter = chart.append("g")
     .attr("clip-path", "url(#clip)");
-
-  var tooltip = chart.append("tooltip")
-      .attr("clip-path", "url(#clip)")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
 
   scatter.selectAll(".dot")
       .data(data)
