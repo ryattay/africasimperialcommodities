@@ -85,7 +85,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
       scatter.selectAll("circle")
         .attr("cx", function(d) {return newX(d.year)})
-        .attr("cy", function(d) [return.newY(d.vx)]);
+        .attr("cy", function(d) {return newY(d.vx)});
 
     }
 
