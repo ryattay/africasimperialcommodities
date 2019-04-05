@@ -50,6 +50,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .on("mouseover", function(d) {
         tooltip.transition()
           .duration(200)
+          .style("pointer-events", "fill")
           .style("opacity", .9);
         tooltip.html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
           .style("left", (d3.event.pageX + 5) + "px")
@@ -58,6 +59,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .on("mouseout", function(d) {
         tooltip.transition()
           .duration(500)
+          .style("pointer-events", "auto")
           .style("opacity", 0);
       });
 
