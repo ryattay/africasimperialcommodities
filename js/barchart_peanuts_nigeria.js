@@ -38,7 +38,7 @@ var svg3 = d3.select("#svg3")
 svg3.call(tip3);
 
 // load the data
-d3.json("./data/groundnuts_nigeria.json", function(error, data) {
+d3.json("./data/peanuts_nigeria.json", function(error, data) {
 
   // scale the range of the data
   x3.domain(data.map(function(d) { return d.year; }));

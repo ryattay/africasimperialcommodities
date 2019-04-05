@@ -22,7 +22,7 @@ var tooltip1 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-d3.json("./data/groundnuts.json", function(error, data1) {
+d3.json("./data/peanuts.json", function(error, data1) {
 
   xScale1.domain([d3.min(data1, xValue1)-1, d3.max(data1, xValue1)+1]);
   yScale1.domain([d3.min(data1, yValue1)-1, d3.max(data1, yValue1)+1]);

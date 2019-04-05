@@ -38,7 +38,7 @@ var svg2 = d3.select("#svg2")
 svg2.call(tip2);
 
 // load the data
-d3.json("./data/groundnuts_senegal.json", function(error, data) {
+d3.json("./data/peanuts_senegal.json", function(error, data) {
 
   // scale the range of the data
   x2.domain(data.map(function(d) { return d.year; }));
