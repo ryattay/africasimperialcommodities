@@ -11,7 +11,7 @@ var chart = d3.select(".chart")
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("position", "absolute")
-    .style("z-index", 20)
+    .style("z-index", 10)
     .style("opacity", 0);
 
 d3.json("./data/animalSkins.json", function(error, data) {
@@ -37,8 +37,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
     .attr("width", width)
     .attr("height", height)
     .attr("x", 0)
-    .attr("y", 0)
-    .style("z-index", 10);
+    .attr("y", 0);
 
   var scatter = chart.append("g")
     .attr("clip-path", "url(#clip)");
