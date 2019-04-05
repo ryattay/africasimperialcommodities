@@ -10,7 +10,6 @@ var chart = d3.select(".chart")
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("position", "absolute")
     .style("z-index", 10)
     .style("opacity", 0);
 
