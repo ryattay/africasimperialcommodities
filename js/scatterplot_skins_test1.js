@@ -10,7 +10,7 @@ var chart = d3.select(".chart")
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .attr("z-index", 10)
+    .style("z-index", 10)
     .style("opacity", 0);
 
 d3.json("./data/animalSkins.json", function(error, data) {
