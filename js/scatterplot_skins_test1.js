@@ -70,7 +70,6 @@ d3.json("./data/animalSkins.json", function(error, data) {
         .attr("width", width)
         .attr("height", height)
         .style("fill", "none")
-        .style("pointer-events", "all")
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
         .call(zoom);
 
