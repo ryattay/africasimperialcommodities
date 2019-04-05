@@ -9,8 +9,7 @@ var chart = d3.select(".chart")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+    .attr("class", "hidden tooltip");
 
 d3.json("./data/animalSkins.json", function(error, data) {
 
@@ -48,17 +47,13 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .attr("cx", function (d) { return x(d.year); })
       .attr("cy", function (d) {return y(d.vx); })
       .on("mouseover", function(d) {
-        tooltip.transition()
-          .duration(200)
-          .style("opacity", .9);
-        tooltip.html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
+        tooltip.classed("hidden", false)
           .style("left", (d3.event.pageX + 5) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      })
+          .style("top", (d3.event.pageY - 28) + "px")
+          .html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons");
+        })
       .on("mouseout", function(d) {
-        tooltip.transition()
-          .duration(500)
-          .style("opacity", 0);
+        tooltip.classed("hidden", true);
       });
 
     var zoom = d3.zoom()
