@@ -48,6 +48,8 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .attr("cx", function (d) { return x(d.year); })
       .attr("cy", function (d) {return y(d.vx); })
       .on("mouseover", function(d) {
+        d3.select("#chart")
+          .style("pointer-events", "none");
         tooltip.transition()
           .duration(200)
           .style("opacity", .9);
@@ -56,6 +58,8 @@ d3.json("./data/animalSkins.json", function(error, data) {
           .style("top", (d3.event.pageY - 28) + "px");
       })
       .on("mouseout", function(d) {
+        d3.select("#chart")
+          .style("pointer-events", "all");
         tooltip.transition()
           .duration(500)
           .style("opacity", 0);
