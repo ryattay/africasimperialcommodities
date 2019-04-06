@@ -37,7 +37,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
     .attr("x", 0)
     .attr("y", 0);
 
-  chart.append("rect")
+  var rectangle = chart.append("rect")
       .attr("width", width)
       .attr("height", height)
       .style("fill", "none")
