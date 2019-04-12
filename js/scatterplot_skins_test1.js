@@ -73,7 +73,10 @@ d3.json("./data/animalSkins.json", function(error, data) {
         .style("visibility", "hidden")
         .style("pointer-events", "visible")
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-        .call(zoom);
+        .call(zoom)
+        .on("click", function(d) {
+          d3.select(this).style("visibility", "visible");
+        });
 
     function updateChart() {
 
