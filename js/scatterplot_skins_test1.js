@@ -29,6 +29,19 @@ d3.json("./data/animalSkins.json", function(error, data) {
   var yAxis = chart.append("g")
     .call(d3.axisLeft(y));
 
+  var zoom = d3.zoom()
+      .scaleExtent([0.5, 20])
+      .extent([[0, 0], [width, height]])
+      .on("zoom", updateChart);
+
+  chart.append("rect")
+      .attr("width", width)
+      .attr("height", height)
+      .style("fill", "none")
+      .style("pointer-events", "all")
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .call(zoom);
+
   var clip = chart.append("defs").append("chart:clipPath")
     .attr("id", "clip")
     .append("SVG:rect")
@@ -60,19 +73,6 @@ d3.json("./data/animalSkins.json", function(error, data) {
           .duration(500)
           .style("opacity", 0);
       });
-
-    var zoom = d3.zoom()
-        .scaleExtent([0.5, 20])
-        .extent([[0, 0], [width, height]])
-        .on("zoom", updateChart);
-
-    chart.append("rect")
-        .attr("width", width)
-        .attr("height", height)
-        .style("fill", "none")
-        .style("pointer-events", "all")
-        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-        .call(zoom);
 
     function updateChart() {
 
