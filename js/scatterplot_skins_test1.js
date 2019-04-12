@@ -75,7 +75,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
         .call(zoom)
         .on("click", function(d) {
-          d3.select(this).select("rect").style("visibility", "visible");
+          d3.select(this).select("rect").transition().duration(500).style("visibility", "visible");
         });
 
     function updateChart() {
