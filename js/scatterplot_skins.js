@@ -57,7 +57,7 @@ d3.json("./data/animalSkins.json", function(error, data1) {
       .data(data1)
     .enter().append("circle")
       .attr("class", "dot")
-      .attr("r", 8)
+      .attr("r", 5)
       .attr("cx", function (d) { return x1(d.year); })
       .attr("cy", function (d) {return y1(d.vx); })
       .on("mouseover", function(d) {
