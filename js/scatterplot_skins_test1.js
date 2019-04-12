@@ -10,11 +10,6 @@ var chart = d3.select(".chart")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .call(zoom);
 
-var zoom = d3.zoom()
-    .scaleExtent([0.5, 20])
-    .extent([[0, 0], [width, height]])
-    .on("zoom", updateChart);
-    
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
@@ -67,6 +62,11 @@ d3.json("./data/animalSkins.json", function(error, data) {
           .duration(500)
           .style("opacity", 0);
       });
+
+    var zoom = d3.zoom()
+        .scaleExtent([0.5, 20])
+        .extent([[0, 0], [width, height]])
+        .on("zoom", updateChart);
 
     function updateChart() {
 
