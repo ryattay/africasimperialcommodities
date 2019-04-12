@@ -33,15 +33,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
       .scaleExtent([0.5, 20])
       .extent([[0, 0], [width, height]])
       .on("zoom", updateChart);
-
-  chart.append("rect")
-      .attr("width", width)
-      .attr("height", height)
-      .style("fill", "none")
-      .style("pointer-events", "all")
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-      .call(zoom);
-
+      
   var clip = chart.append("defs").append("chart:clipPath")
     .attr("id", "clip")
     .append("SVG:rect")
@@ -52,6 +44,14 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
   var scatter = chart.append("g")
     .attr("clip-path", "url(#clip)");
+
+  chart.append("rect")
+      .attr("width", width)
+      .attr("height", height)
+      .style("fill", "none")
+      .style("pointer-events", "all")
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .call(zoom);
 
   scatter.selectAll(".dot")
       .data(data)
