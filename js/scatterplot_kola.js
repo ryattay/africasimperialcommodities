@@ -13,7 +13,7 @@ var tooltip1 = d3.select("body").append("div")
     .style("position", "absolute")
     .style("text-align", "center")
     .style("width", "300px")
-    .style("height", "98px")
+    .style("height", "112px")
     .style("padding-top", "14px")
     .style("font", "8px")
     .style("background", "lightgrey")
@@ -40,7 +40,7 @@ d3.json("./data/kola.json", function(error, data1) {
     .call(d3.axisLeft(y1));
 
   var zoom1 = d3.zoom()
-      .scaleExtent([0.5, 20])
+      .scaleExtent([0.5, 10])
       .extent([[0, 0], [width1, height1]])
       .on("zoom", updateChart1);
 

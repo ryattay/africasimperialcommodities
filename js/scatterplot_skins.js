@@ -40,7 +40,7 @@ d3.json("./data/animalSkins.json", function(error, data1) {
     .call(d3.axisLeft(y1));
 
   var zoom1 = d3.zoom()
-      .scaleExtent([0.5, 20])
+      .scaleExtent([0.5, 10])
       .extent([[0, 0], [width1, height1]])
       .on("zoom", updateChart1);
 
