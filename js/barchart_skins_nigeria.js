@@ -26,7 +26,7 @@ var tooltip4 = d3.select("body").append("div")
     .style("opacity", 0);
 
 // add the SVG element
-var chart4 = d3.select(".chart4")
+var chart4 = d3.select("#chart4")
     .attr("width", width4 + margin4.left + margin4.right)
     .attr("height", height4 + margin4.top + margin4.bottom)
   .append("g")
