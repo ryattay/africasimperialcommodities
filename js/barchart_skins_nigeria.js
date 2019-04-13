@@ -34,7 +34,7 @@ var chart4 = d3.select("#chart4")
           "translate(" + margin4.left + "," + margin4.top + ")");
 
 // load the data
-d3.json("./data/animalSkins_senegala.json", function(error, data4) {
+d3.json("./data/animalSkins_nigeria.json", function(error, data4) {
 
   // scale the range of the data
   x4.domain(data4.map(function(d) { return d.year; }));
