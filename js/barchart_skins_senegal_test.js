@@ -56,7 +56,12 @@ d3.json("./data/animalSkins_senegal2.json", function(error, data) {
 
   chart.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.15em")
+        .attr("transform", "rotate(-90)");
 
   chart.append("g")
       .call(d3.axisLeft(y));
