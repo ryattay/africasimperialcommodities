@@ -20,7 +20,6 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
   var xAxis = chart.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .tickFormat(d3.format("d"))
     .call(d3.axisBottom(x));
 
   var y = d3.scaleLinear()
@@ -57,9 +56,8 @@ d3.json("./data/animalSkins.json", function(error, data) {
   scatter.selectAll(".dot")
       .data(data)
     .enter().append("circle")
-      .style("fill","steelblue")
       .attr("class", "dot")
-      .attr("r", 5)
+      .attr("r", 4)
       .attr("cx", function (d) { return x(d.year); })
       .attr("cy", function (d) {return y(d.vx); })
       .on("mouseover", function(d) {
