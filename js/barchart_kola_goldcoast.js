@@ -4,76 +4,76 @@ var margin3 = {top: 20, right: 20, bottom: 40, left: 40},
     height3 = 500 - margin3.top - margin3.bottom;
 
 // Set the ranges
-var x3 = d3.scale.ordinal()
-    .rangeRoundBands([0, width3], .05);
+var x3 = d3.scaleBand()
+    .range([0, width3])
+    .padding(0.05);
 
-var y3 = d3.scale.linear()
+var y3 = d3.scaleLinear()
     .range([height3, 0]);
 
-// Define the axis
-var xAxis3 = d3.svg.axis()
-  .scale(x3)
-  .orient("bottom");
-
-var yAxis3 = d3.svg.axis()
-  .scale(y3)
-  .orient("left")
-  .ticks(10);
-
-var tip3 = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10,0])
-  .html(function(d) {
-    return d.vx + " metric tons";
-  });
+var tooltip3 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("text-align", "center")
+    .style("width", "200px")
+    .style("height", "56px")
+    .style("padding-top", "8px")
+    .style("font", "8px")
+    .style("background", "lightgrey")
+    .style("border", "0px")
+    .style("border-radius", "8px")
+    .style("pointer-events", "none")
+    .style("opacity", 0);
 
 // add the SVG element
-var svg3 = d3.select("#svg3")
+var chart3 = d3.select("#chart3")
     .attr("width", width3 + margin3.left + margin3.right)
     .attr("height", height3 + margin3.top + margin3.bottom)
   .append("g")
     .attr("transform",
           "translate(" + margin3.left + "," + margin3.top + ")");
 
-svg3.call(tip3);
-
 // load the data
-d3.json("./data/kola_goldcoast.json", function(error, data) {
+d3.json("./data/kola_goldcoast.json", function(error, data3) {
 
   // scale the range of the data
-  x3.domain(data.map(function(d) { return d.year; }));
-  y3.domain([0, d3.max(data, function(d) { return d.vx; })]);
-
-  // add axis
-  svg3.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height3 + ")")
-      .call(xAxis3)
-    .selectAll("text")
-      .style("text-anchor", "end")
-      .attr("dx", "-.8em")
-      .attr("dy", "-.55em")
-      .attr("transform", "rotate(-90)" );
-
-  svg3.append("g")
-      .attr("class", "y axis")
-      .call(yAxis3)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 5)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Metric tons");
+  x3.domain(data3.map(function(d) { return d.year; }));
+  y3.domain([0, d3.max(data3, function(d) { return d.vx; })]);
 
   // Add bar chart
-  svg3.selectAll(".bar")
-      .data(data)
+  chart3.selectAll(".bar")
+      .data(data3)
     .enter().append("rect")
       .style("fill", "steelblue")
+      .attr("class", "bar")
       .attr("x", function(d) { return x3(d.year); })
-      .attr("width", x3.rangeBand())
+      .attr("width", x3.bandwidth())
       .attr("y", function(d) { return y3(d.vx); })
-      .attr("height", function(d) { return height3 - y3(d.vx); })
-      .on("mouseover", tip3.show)
-      .on("mouseout", tip3.hide)
+      .attr("height", function(d) { return height2 - y3(d.vx); })
+      .on("mouseover", function(d) {
+        tooltip3.transition()
+          .duration(200)
+          .style("opacity", .9);
+        tooltip3.html("Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
+          .style("left", (d3.event.pageX + 5) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+        tooltip3.transition()
+          .duration(500)
+          .style("opacity", 0);
+      });
+
+  chart3.append("g")
+      .attr("transform", "translate(0," + height3 + ")")
+      .call(d3.axisBottom(x3))
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.15em")
+        .attr("transform", "rotate(-90)");
+
+  chart3.append("g")
+      .call(d3.axisLeft(y3));
+
 });
