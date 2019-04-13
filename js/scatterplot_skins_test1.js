@@ -12,14 +12,7 @@ var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var parseTime = d3.timeParse("%y");
-
 d3.json("./data/animalSkins.json", function(error, data) {
-
-  data.forEach(function(d) {
-    d.year = parseTime(d.year);
-    d.vx = +d.vx
-  });
 
   var x = d3.scaleLinear()
     .domain([1825, 1950])
@@ -27,6 +20,7 @@ d3.json("./data/animalSkins.json", function(error, data) {
 
   var xAxis = chart.append("g")
     .attr("transform", "translate(0," + height + ")")
+    .tickFormat(d3.format("d"))
     .call(d3.axisBottom(x));
 
   var y = d3.scaleLinear()
