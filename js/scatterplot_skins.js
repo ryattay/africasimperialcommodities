@@ -10,6 +10,16 @@ var chart1 = d3.select(".chart")
 
 var tooltip1 = d3.select("body").append("div")
     .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("text-align", "center")
+    .style("width", "300px")
+    .style("height", "98px")
+    .style("padding-top", "14px")
+    .style("font", "8px")
+    .style("background", "lightgrey")
+    .style("border", "0px")
+    .style("border-radius", "8px")
+    .style("pointer-events", "none")
     .style("opacity", 0);
 
 d3.json("./data/animalSkins.json", function(error, data1) {
@@ -56,6 +66,8 @@ d3.json("./data/animalSkins.json", function(error, data1) {
   scatter1.selectAll(".dot")
       .data(data1)
     .enter().append("circle")
+      .style("fill", "steelblue")
+      .style("stroke", "black")
       .attr("class", "dot")
       .attr("r", 5)
       .attr("cx", function (d) { return x1(d.year); })

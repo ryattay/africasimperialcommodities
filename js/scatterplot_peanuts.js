@@ -2,17 +2,7 @@ var margin1 = {top: 20, right: 20, bottom: 40, left: 40},
     width1 = 760 - margin1.left - margin1.right,
     height1 = 500 - margin1.top - margin1.bottom;
 
-var xValue1 = function(d) { return d.year;},
-    xScale1 = d3.scale.linear().range([0, width1]),
-    xMap1 = function(d) { return xScale1(xValue1(d));},
-    xAxis1 = d3.svg.axis().scale(xScale1).orient("bottom");
-
-var yValue1 = function(d) { return d.vx;},
-    yScale1 = d3.scale.linear().range([height1, 0]),
-    yMap1 = function(d) { return yScale1(yValue1(d));},
-    yAxis1 = d3.svg.axis().scale(yScale1).orient("left");
-
-var svg1 = d3.select("#svg1")
+var chart1 = d3.select(".chart")
     .attr("width", width1 + margin1.left + margin1.right)
     .attr("height", height1 + margin1.top + margin1.bottom)
   .append("g")
@@ -20,47 +10,73 @@ var svg1 = d3.select("#svg1")
 
 var tooltip1 = d3.select("body").append("div")
     .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("text-align", "center")
+    .style("width", "300px")
+    .style("height", "98px")
+    .style("padding-top", "14px")
+    .style("font", "8px")
+    .style("background", "lightgrey")
+    .style("border", "0px")
+    .style("border-radius", "8px")
+    .style("pointer-events", "none")
     .style("opacity", 0);
 
 d3.json("./data/peanuts.json", function(error, data1) {
 
-  xScale1.domain([d3.min(data1, xValue1)-1, d3.max(data1, xValue1)+1]);
-  yScale1.domain([d3.min(data1, yValue1)-1, d3.max(data1, yValue1)+1]);
+  var x1 = d3.scaleLinear()
+    .domain([1830, 1950])
+    .range([0, width1]);
 
-  svg1.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height1 + ")")
-      .call(xAxis1)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width1)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("Year");
+  var xAxis1 = chart1.append("g")
+    .attr("transform", "translate(0," + height1 + ")")
+    .call(d3.axisBottom(x1));
 
-  svg1.append("g")
-      .attr("class", "y axis")
-      .call(yAxis1)
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Metric tons");
+  var y1 = d3.scaleLinear()
+    .domain([0, 9600])
+    .range([height1, 0]);
 
-  svg1.selectAll(".dot")
+  var yAxis1 = chart1.append("g")
+    .call(d3.axisLeft(y1));
+
+  var zoom1 = d3.zoom()
+      .scaleExtent([0.5, 20])
+      .extent([[0, 0], [width1, height1]])
+      .on("zoom", updateChart1);
+
+  chart1.append("rect")
+      .attr("width", width1)
+      .attr("height", height1)
+      .style("fill", "none")
+      .style("pointer-events", "all")
+      .attr('transform', 'translate(' + margin1.left + ',' + margin1.top + ')')
+      .call(zoom1);
+
+  var clip1 = chart1.append("defs").append("chart:clipPath")
+    .attr("id", "clip")
+    .append("SVG:rect")
+    .attr("width", width1)
+    .attr("height", height1)
+    .attr("x", 0)
+    .attr("y", 0);
+
+  var scatter1 = chart1.append("g")
+    .attr("clip-path", "url(#clip)");
+
+  scatter1.selectAll(".dot")
       .data(data1)
     .enter().append("circle")
+      .style("fill", "steelblue")
+      .style("stroke", "black")
       .attr("class", "dot")
-      .attr("r", 3.5)
-      .attr("cx", xMap1)
-      .attr("cy", yMap1)
+      .attr("r", 5)
+      .attr("cx", function (d) { return x1(d.year); })
+      .attr("cy", function (d) {return y1(d.vx); })
       .on("mouseover", function(d) {
         tooltip1.transition()
           .duration(200)
           .style("opacity", .9);
-        tooltip1.html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + xValue1(d) + "<br/> Quantity: " + yValue1(d) + " metric tons")
+        tooltip1.html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
       })
@@ -69,5 +85,20 @@ d3.json("./data/peanuts.json", function(error, data1) {
           .duration(500)
           .style("opacity", 0);
       });
+
+    function updateChart1() {
+
+      var newX1 = d3.event.transform.rescaleX(x1);
+      var newY1 = d3.event.transform.rescaleY(y1);
+
+      xAxis1.call(d3.axisBottom(newX1))
+      yAxis1.call(d3.axisLeft(newY1))
+
+      scatter1.selectAll("circle")
+        .attr("cx", function(d) {return newX1(d.year)})
+        .attr("cy", function(d) {return newY1(d.vx)});
+
+    }
+
 
 });
