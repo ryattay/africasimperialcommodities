@@ -13,6 +13,16 @@ var y = d3.scaleLinear()
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("text-align", "center")
+    .style("width", 200px)
+    .style("height", 56px)
+    .style("padding-top", 16px)
+    .style("font", 8px)
+    .style("background", "lightgrey")
+    .style("border", 0px)
+    .style("border-radius", 8px)
+    .style("pointer-events", "none")
     .style("opacity", 0);
 
 // add the SVG element
