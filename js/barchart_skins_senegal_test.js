@@ -4,28 +4,16 @@ var margin = {top: 20, right: 20, bottom: 70, left: 40},
     height = 500 - margin.top - margin.bottom;
 
 // Set the ranges
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .05);
+var x = d3.scaleBand()
+    .range([0, width])
+    .padding(0.05);
 
-var y = d3.scale.linear()
+var y = d3.scaleLinear()
     .range([height, 0]);
 
-// Define the axis
-var xAxis = d3.svg.axis()
-  .scale(x)
-  .orient("bottom");
-
-var yAxis = d3.svg.axis()
-  .scale(y)
-  .orient("left")
-  .ticks(10);
-
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10,0])
-  .html(function(d) {
-    return d.vx + " metric tons";
-  });
+var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 // add the SVG element
 var chart = d3.select(".chart")
@@ -35,8 +23,6 @@ var chart = d3.select(".chart")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-chart.call(tip);
-
 // load the data
 d3.json("./data/animalSkins_senegal.json", function(error, data) {
 
@@ -44,45 +30,35 @@ d3.json("./data/animalSkins_senegal.json", function(error, data) {
   x.domain(data.map(function(d) { return d.year; }));
   y.domain([0, d3.max(data, function(d) { return d.vx; })]);
 
-  // add axis
-  chart.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .selectAll("text")
-      .style("text-anchor", "end")
-      .attr("dx", "-.8em")
-      .attr("dy", "-.55em")
-      .attr("transform", "rotate(-90)" );
-
-  chart.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 5)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Metric tons");
-
-  // chart.append("g")
-  //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-  //     .selectAll(".textlabel")
-  //     .data(data)
-  //   .enter().append("text")
-  //     .style("fill", "black")
-  //     .attr("class", "textlabel")
-  //     .attr("y", function(d) { return y(d.vx) - 3; });
-
   // Add bar chart
   chart.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
+      .attr("class", "bar")
       .attr("x", function(d) { return x(d.year); })
-      .attr("width", x.rangeBand())
+      .attr("width", x.bandwidth())
       .attr("y", function(d) { return y(d.vx); })
       .attr("height", function(d) { return height - y(d.vx); })
-      .on("mouseover", tip.show)
-      .on("mouseout", tip.hide)
+      .on("mouseover", function(d) {
+        tooltip.transition()
+          .duration(200)
+          .style("opacity", .9);
+        tooltip.html("Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
+          .style("left", (d3.event.pageX + 5) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+        tooltip.transition()
+          .duration(500)
+          .style("opacity", 0);
+      });
+
+  chart.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  chart.append("g")
+      .call(d3.axisLeft(y));
+
 });
