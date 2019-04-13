@@ -13,7 +13,7 @@ var tooltip1 = d3.select("body").append("div")
     .style("position", "absolute")
     .style("text-align", "center")
     .style("width", "300px")
-    .style("height", "112px")
+    .style("height", "98px")
     .style("padding-top", "14px")
     .style("font", "8px")
     .style("background", "lightgrey")
@@ -76,7 +76,7 @@ d3.json("./data/kola.json", function(error, data1) {
         tooltip1.transition()
           .duration(200)
           .style("opacity", .9);
-        tooltip1.html("Place of export: " + d["cntr_desc"] + "<br/> Product: " + d["prdt_desc"] + "<br/> Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
+        tooltip1.html("Place of export: " + d["cntr_desc"] + "<br/> Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
       })
