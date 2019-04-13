@@ -19,28 +19,15 @@ d3.json("./data/animalSkins.json", function(error, data) {
     .range([0, width]);
 
   var xAxis = chart.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("Year");
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
 
   var y = d3.scaleLinear()
     .domain([0, 2250])
     .range([height, 0]);
 
   var yAxis = chart.append("g")
-      .call(d3.axisLeft(y))
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Metric tons");
+    .call(d3.axisLeft(y));
 
   var zoom = d3.zoom()
       .scaleExtent([0.5, 20])
