@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="cartyrya">
+
+    <title>Africa's Imperial Commodities</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- D3.JS -->
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Africa's Imperial Commodities</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="methodology.html">Methodology</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commodities</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="commodities.html">Overview</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="skins.html">Skins</a>
+                <a class="dropdown-item" href="peanuts.html">Peanuts</a>
+                <a class="dropdown-item" href="kola.html">Kola</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Resources</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/Nigeria_CO-1069-59-6.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Animal Hides</h1>
+              <span class="subheading"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Essay Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>In Africa and Europe, professional tanners used animal skins to produce leather products. They transformed cowhides and goat and sheep skins into shoes, bags, clothing accessories, and book covers. Some professionals specialized in animal pelts, or skins without the hair removed, as well as the skins of reptiles and wild animals. Throughout Africa, most leather production occurred at the household level with small groups of professionals who trained apprentices in the science and art of leather making. The regional production across Africa varied as can be expected by the amount of cultural diversity. Moreover, production changed over time. In some cases, new political leaders looked to leather workers to produce the material culture associated with their rule.</p>
+
+            <p>European histories of leather production also varied by location and changed over time. In the nineteenth century, towns in Britain and France became known for leather shoes and clothing accessories. Northampton and Romans-sur-Isère are two examples of towns where leather shaped the historic development and character. These towns were connected to broader changes in the production of leather goods in Europe. Scientific and technological innovations encouraged greater production for entrepreneurs willing and able to invest in the new chemicals and mechanical equipment. Like other European industries, leather production expanded as part of the industrial revolution. The changes occurring within British and French towns shaped the economic relationships between Europe and Africa.</p>
+
+            <h2 class="section-heading">African Exports</h2>
+
+            <p>In the nineteenth century, European merchants imported raw and tanned animal skins from different locations around the world. The quantity of African exports paled in comparison to other skin trades, notably the trade in pelts from North America. Nonetheless traders along the African coast continued to supply European merchants with cowhides and goat and sheep skins. The increase in African exports at the beginning of the twentieth century coincided with the expansion of colonial rule. Colonial policies, including household taxes and internal trade barriers, redirected trade to European controlled ports. At the same time, African entrepreneurs took advantage of increased external demand to benefit from the more intensive trade relationships. The world wars provided additional opportunities to African entrepreneurs. The wars disrupted supply chains and increased demand for leather used in military clothing and accessories.</p>
+
+            <p>The below scatterplot contains a point for every recorded export of animal hides in the <a href="https://www.aehnetwork.org/data-research/african-commodity-trade-database/">African Commodity Trade Database (ACTD)</a>:</p>
+
+            <blockquote>
+              <p>Frankema, Ewout, Jeffrey Williamson and Pieter Woltjer. “An Economic Rationale for the West African Scramble? The Commercial Transition and the Commodity Price Boom of 1835-1885.” The Journal of Economic History 78, no. 1 (2018): 231-267.</p>
+            </blockquote>
+
+            <p>Hovering over one of the points will show the place of export, type of commodity, year, and quantity exported. You can also zoom into and drag the visualization with your mouse.</p>
+
+            <svg class="chart" id="chart1"></svg>
+            <script type="text/javascript" src="./js/scatterplot_skins.js"></script>
+
+            <p>The scatterplot illustrates broader trends contained in the database, notably the substantial increase in exports in the 1910s and 1920s. Many of these points come from Southern African export statistics. The newly formed Union of South Africa and the French colony of Madagascar account for the largest quantities of skin exports at this time. Even territories with smaller export quantities demonstrate how the Afro-European trade relationship changed in the early twentieth century. The below sections compare the export trends in two West African colonies.</p>
+
+            <h2 class="section-heading">Senegal</h2>
+
+            <p>The territory of Senegal contains diverse groups of people who participated in historic trading routes across West and North Africa. The arrival of the Portuguese along the coast in the fifteenth century initiated direct trading relationships with European merchants. By the nineteenth century, French trading companies dominated the coastal trade. In 1895, the French government consolidated control over the colony and remained in control until Senegalese independence in 1960.</p>
+
+            <p>The below bar graph shows the annual export of animal skins from 1839 until 1895. Hovering over one of the bars will show the precise quantity of exports along with the year.</p>
+
+            <svg class="chart" id="chart2"></svg>
+            <script type="text/javascript" src="./js/barchart_skins_senegala.js"></script>
+
+            <p>The visualization demonstrates the effects of external events on the trade. During the 1848 Revolution, the trade reduced from 30 metric tons to 10 metric tons. Following the revolution, the trade peaked in 1857 at 63 metric tons and then peaked again in 1865 at 72 metric tons. The trade then petered out as the century came to a close.</p>
+
+            <p>The below bar graph shows the annual export of animal skins from 1895 when Jean-Baptiste Chaudié became Governor General of the newly formed federation in French West Africa.</p>
+
+            <svg class="chart" id="chart3"></svg>
+            <script type="text/javascript" src="./js/barchart_skins_senegalb.js"></script>
+
+            <p>The visualization shows the exports remained low until World War I and then increased significantly peaking at 364 metric tons in 1918. By the 1920s, the colonial government instituted policies to coerce Senegalese to participate in the export economy. After a brief decline in animal skin exports, they peaked again in the late 1920s reaching 422 metric tons in 1928.</p>
+
+            <h2 class="section-heading">Nigeria</h2>
+
+            <p>Unlike Senegal, the animal skin exports from Nigeria do not begin in the precolonial period. They begin after formal colonization by the British. While a portion of southern Nigeria was declared a colony as early as 1886, the northern and southern parts of the colony were not combined by the British administration until 1914. Nigeria gained independence from Britain in 1960.</p>
+
+            <p>The below bar graph shows the annual export of animal hides from 1919 to 1947. Hovering over one of the bars will show the precise quantity of exports along with the year.</p>
+
+            <svg class="chart" id="chart4"></svg>
+            <script type="text/javascript" src="./js/barchart_skins_nigeria.js"></script>
+
+            <p>Compared to the data for Senegal, the Nigerian bar graph shows consistent exports for the colonial period between 200 and 400 metric tons per year. Like Senegal, the Nigerian exports peaked in 1928 with more than 400 metric tons of animal skins exported from the colony. Quite suddenly in 1947, the export of animal skins from Nigeria increased substantially to 903 metric tons.</p>
+
+            <h2 class="section-heading">Conclusion</h2>
+
+            <p>The data from the ACTD shows an extended period of animal skin exports from Senegal beginning in the early nineteenth century. Although animal skins do not approach the quantity of peanut or cotton exports from the colony, they contribute to a fuller understanding of the economic relationship between French and Senegalese traders. The data for Nigeria rather demonstrate the ability of traders to redirect the flayed and preserved animal skins to the export market in consistent quantities. What is unclear from the data for both colonies is how African cattle herders, butchers, and traders substantially increased export quantities during the interwar period.</p>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="https://github.com/cartyrya/africasimperialcommodities">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Africa's Imperial Commodities 2019</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
