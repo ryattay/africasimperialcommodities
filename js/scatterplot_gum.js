@@ -25,7 +25,7 @@ var tooltip1 = d3.select("body").append("div")
 d3.json("./data/gum.json", function(error, data1) {
 
   var x1 = d3.scaleLinear()
-    .domain([1885, 1950])
+    .domain([1835, 1945])
     .range([0, width1]);
 
   var xAxis1 = chart1.append("g")
@@ -33,7 +33,7 @@ d3.json("./data/gum.json", function(error, data1) {
     .call(d3.axisBottom(x1));
 
   var y1 = d3.scaleLinear()
-    .domain([0, 650])
+    .domain([0, 600])
     .range([height1, 0]);
 
   var yAxis1 = chart1.append("g")
