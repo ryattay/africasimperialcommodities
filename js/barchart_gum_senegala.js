@@ -34,7 +34,7 @@ var chart2 = d3.select("#chart2")
           "translate(" + margin2.left + "," + margin2.top + ")");
 
 // load the data
-d3.json("./data/gum_senegal.json", function(error, data2) {
+d3.json("./data/gum_senegala.json", function(error, data2) {
 
   // scale the range of the data
   x2.domain(data2.map(function(d) { return d.year; }));

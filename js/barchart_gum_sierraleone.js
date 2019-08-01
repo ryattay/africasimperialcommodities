@@ -1,17 +1,17 @@
 // Canvas dimensions
-var margin3 = {top: 20, right: 20, bottom: 40, left: 40},
-    width3 = 760 - margin3.left - margin3.right,
-    height3 = 500 - margin3.top - margin3.bottom;
+var margin4 = {top: 20, right: 20, bottom: 40, left: 40},
+    width4 = 760 - margin4.left - margin4.right,
+    height4 = 500 - margin4.top - margin4.bottom;
 
 // Set the ranges
-var x3 = d3.scaleBand()
-    .range([0, width3])
+var x4 = d3.scaleBand()
+    .range([0, width4])
     .padding(0.05);
 
-var y3 = d3.scaleLinear()
-    .range([height3, 0]);
+var y4 = d3.scaleLinear()
+    .range([height4, 0]);
 
-var tooltip3 = d3.select("body").append("div")
+var tooltip4 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("position", "absolute")
     .style("text-align", "center")
@@ -26,54 +26,54 @@ var tooltip3 = d3.select("body").append("div")
     .style("opacity", 0);
 
 // add the SVG element
-var chart3 = d3.select("#chart3")
-    .attr("width", width3 + margin3.left + margin3.right)
-    .attr("height", height3 + margin3.top + margin3.bottom)
+var chart4 = d3.select("#chart4")
+    .attr("width", width4 + margin4.left + margin4.right)
+    .attr("height", height4 + margin4.top + margin4.bottom)
   .append("g")
     .attr("transform",
-          "translate(" + margin3.left + "," + margin3.top + ")");
+          "translate(" + margin4.left + "," + margin4.top + ")");
 
 // load the data
-d3.json("./data/gum_sierraleone.json", function(error, data3) {
+d3.json("./data/gum_sierraleone.json", function(error, data4) {
 
   // scale the range of the data
-  x3.domain(data3.map(function(d) { return d.year; }));
-  y3.domain([0, d3.max(data3, function(d) { return d.vx; })]);
+  x4.domain(data4.map(function(d) { return d.year; }));
+  y4.domain([0, d3.max(data4, function(d) { return d.vx; })]);
 
   // Add bar chart
-  chart3.selectAll(".bar")
-      .data(data3)
+  chart4.selectAll(".bar")
+      .data(data4)
     .enter().append("rect")
       .style("fill", "steelblue")
       .attr("class", "bar")
-      .attr("x", function(d) { return x3(d.year); })
-      .attr("width", x3.bandwidth())
-      .attr("y", function(d) { return y3(d.vx); })
-      .attr("height", function(d) { return height2 - y3(d.vx); })
+      .attr("x", function(d) { return x4(d.year); })
+      .attr("width", x4.bandwidth())
+      .attr("y", function(d) { return y4(d.vx); })
+      .attr("height", function(d) { return height4 - y4(d.vx); })
       .on("mouseover", function(d) {
-        tooltip3.transition()
+        tooltip4.transition()
           .duration(200)
           .style("opacity", .9);
-        tooltip3.html("Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
+        tooltip4.html("Year: " + d["year"] + "<br/> Quantity: " + d["vx"] + " metric tons")
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
       })
       .on("mouseout", function(d) {
-        tooltip3.transition()
+        tooltip4.transition()
           .duration(500)
           .style("opacity", 0);
       });
 
-  chart3.append("g")
-      .attr("transform", "translate(0," + height3 + ")")
-      .call(d3.axisBottom(x3))
+  chart4.append("g")
+      .attr("transform", "translate(0," + height4 + ")")
+      .call(d3.axisBottom(x4))
       .selectAll("text")
         .style("text-anchor", "end")
         .attr("dx", "-.8em")
         .attr("dy", "-.15em")
         .attr("transform", "rotate(-90)");
 
-  chart3.append("g")
-      .call(d3.axisLeft(y3));
+  chart4.append("g")
+      .call(d3.axisLeft(y4));
 
 });
