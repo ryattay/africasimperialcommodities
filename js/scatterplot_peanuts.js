@@ -33,7 +33,7 @@ d3.json("./data/peanuts.json", function(error, data1) {
     .call(d3.axisBottom(x1));
 
   var y1 = d3.scaleLinear()
-    .domain([0, 9600])
+    .domain([-5, 9600])
     .range([height1, 0]);
 
   var yAxis1 = chart1.append("g")
