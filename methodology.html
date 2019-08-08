@@ -76,29 +76,28 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+
           <p>Africa’s Imperial Commodities uses available data on commodity exports to explore the history of African and European trade relationships. The data for the website comes from the <a href="https://www.aehnetwork.org/data-research/african-commodity-trade-database/">African Commodity Trade Database (ACTD)</a> published as:</p>
 
           <blockquote class="blockquote">Frankema, Ewout, Jeffrey Williamson and Pieter Woltjer. “An Economic Rationale for the West African Scramble? The Commercial Transition and the Commodity Price Boom of 1835-1885.” The Journal of Economic History 78, no. 1 (2018): 231-267.</blockquote>
 
-          <h2 class="section-heading">Historical Period</h2>
-
-          <p>The most robust dataset in the ACTD includes information on fourteen commodities that moved between Africa and Europe in the nineteenth and early twentieth century. The periodization of the dataset falls between the British abolition of the slave trade in 1807 and World War II. The dataset, like this website, is concerned with two periods in African and European history: so-called legitimate trade in the nineteenth century and the colonial period in the early twentieth. The term legitimate trade signaled a shift in the focus of European trading engagements with Africa from enslaved persons to commodities. However, there was no clean break between these two periods. Slaves continued to be shipped across the Atlantic and Indian Ocean in the nineteenth century.</p>
-
-          <p>The colonial period continued some export trends from the era of legitimate trade. Commodities like peanuts, for example, increased in export quantities during the colonial period. Others like gum and resins maintained consistent export quantities during the colonial period and did not continue to increase in quantity as they had during the era of legitimate trade.</p>
-
           <h2 class="section-heading">Data</h2>
 
-          <p>The legitimate trade and colonial dataset in the ACTD contains more than nine thousand observations, where each observation includes annual statistics for a single commodity. These statistics include information about the quantity, cost, and place of export. The ACTD was compiled from the Colonial Blue Books, the Statistical Abstracts for the United Kingdom, the Tableau General du Commerce de la France, and the Annual Statements of Trade for the United Kingdom. Data entry was completed by the Rural Environment History Group at Wageningen University.</p>
+          <!-- Add link -->
+
+          <p>The most robust dataset in the ACTD includes information on fourteen commodities that moved between Africa and Europe in the nineteenth and early twentieth century. This dataset contains more than nine thousand observations, where each observation includes annual statistics for a single commodity. These statistics include information about the quantity, cost, and place of export. The dataset was compiled from the Colonial Blue Books, the Statistical Abstracts for the United Kingdom, the Tableau General du Commerce de la France, and the Annual Statements of Trade for the United Kingdom. Data entry was completed by the Rural Environment History Group at Wageningen University. You can read more about its construction in <a href="">this published journal article</a>.</p>
 
           <h2 class="section-heading">Processing</h2>
 
-          <p>The data on this website is saved as JSON files and was processed using <a href="https://www.r-project.org/">R</a>, a language for statistical analysis. The data visualizations were created using <a href="https://d3js.org/">D3.JS</a>, a JavaScript library.</p>
+          <p>The data that features in Africa's Imperial Commodities originated in the ACTD dataset. The data was subset into indivudal commodity tables that contain records with quantities in metric tons. The exclusion of non-metric observations was necessary to standardize the data used in the visualizations. Otherwise, it would not have been possible to analyze historical trends or to compare exports from different colonies. You can read more about how processing affects the visualizations on each of the commodity pages. The commodity tables were then transformed into JSON files and uploaded into the website. <a href="https://www.r-project.org/">R</a>, a language for statistical analysis, was used to process and transform the ACTD dataset.</p>
+
+          <p>The website features two types of visualizations, scatterplots and barcharts. The scatterplots display all commodity observations with metric conversions, even for multiple observations in the same year. Meanwhile, the barcharts display annual export quantities for single colonies. Both visualizations were created using <a href="https://d3js.org/">D3.JS</a>, a JavaScript library.</p>
 
           <h2 class="section-heading">Limitations</h2>
 
-          <p>Not every observation in the dataset, however, contains complete information about the cost or quantity of the commodity, for example. These omissions illustrate a challenge with creating a database from historical documents that differ by collection and even within the same collection may be inconsistent over long periods of time. Nonetheless, the database contains enough consistency whereby the publishers converted several different currencies into British pounds. They have also standardized non-metric units of quantity into kilograms, where possible.</p>
+          <!-- What does export data not tell us about the commodities? -->
 
-          <p>The cost information tends to be more important for economic historians who measure the imbalance in trade terms as expressed by monetary values. Africa's Imperial Commodities focuses instead on the quantity of commodity exports and only includes observations with metric measurements. This decision limits the website's underlying data in important ways. For the 1,030 observations of animal hides and skins, 774 of them (75%) contain metric measurements. This creates a regional bias that reflects the different recording strategies in the source documents. For example, a majority of the animal hide observations for the Cape of Good Hope (99%) and all of those for Somalia do not include metric measurements. The essays in Africa's Imperial Commodities overcome this limitation by focusing on geographic areas with consistent observations.</p>
+          <p></p>
 
         </div>
       </div>
